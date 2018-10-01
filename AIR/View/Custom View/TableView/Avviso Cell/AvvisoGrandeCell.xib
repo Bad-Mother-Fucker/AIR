@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="avvisoGrandeCell" rowHeight="161" id="KGk-i7-Jjw" customClass="AvvisoGrandeCell" customModule="AIR" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="160.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSy-2F-HH3" customClass="ShadowView" customModule="AIR" customModuleProvider="target">
+                        <rect key="frame" x="16" y="10.5" width="343" height="139.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwe-az-NVL" userLabel="backgroundView">
+                        <rect key="frame" x="16" y="11" width="343" height="139"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Lh1-a5-QfE" userLabel="timeIcon">
+                                <rect key="frame" x="8" y="15" width="23" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="Vdv-Y9-20u"/>
+                                    <constraint firstAttribute="width" constant="23" id="hPW-0J-gHN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ay6-rc-gDe" userLabel="dateLabel">
+                                <rect key="frame" x="46" y="17" width="37.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="97D-VJ-dbT" userLabel="testoAvviso">
+                                <rect key="frame" x="8" y="43" width="226" height="88"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ay6-rc-gDe" firstAttribute="leading" secondItem="Lh1-a5-QfE" secondAttribute="trailing" constant="15" id="89E-Le-VjL"/>
+                            <constraint firstAttribute="trailing" secondItem="97D-VJ-dbT" secondAttribute="trailing" constant="109" id="9oM-8M-w2m"/>
+                            <constraint firstItem="Lh1-a5-QfE" firstAttribute="leading" secondItem="zwe-az-NVL" secondAttribute="leading" constant="8" id="WxD-vi-RKt"/>
+                            <constraint firstAttribute="bottom" secondItem="97D-VJ-dbT" secondAttribute="bottom" constant="8" id="jQF-se-IlC"/>
+                            <constraint firstItem="Lh1-a5-QfE" firstAttribute="top" secondItem="zwe-az-NVL" secondAttribute="top" constant="15" id="lV5-kF-0HY"/>
+                            <constraint firstItem="ay6-rc-gDe" firstAttribute="top" secondItem="zwe-az-NVL" secondAttribute="top" constant="17" id="lpe-Cd-lQh"/>
+                            <constraint firstItem="97D-VJ-dbT" firstAttribute="leading" secondItem="Lh1-a5-QfE" secondAttribute="leading" id="pTU-88-Qj1"/>
+                            <constraint firstItem="97D-VJ-dbT" firstAttribute="top" secondItem="ay6-rc-gDe" secondAttribute="bottom" constant="8" id="ul8-hS-FrD"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="WSy-2F-HH3" secondAttribute="bottom" constant="10.5" id="Eub-hd-ZMW"/>
+                    <constraint firstAttribute="trailing" secondItem="WSy-2F-HH3" secondAttribute="trailing" constant="16" id="KDT-tg-Eqz"/>
+                    <constraint firstItem="zwe-az-NVL" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="Ssu-FU-rRb"/>
+                    <constraint firstItem="zwe-az-NVL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="TpZ-y6-2C9"/>
+                    <constraint firstItem="WSy-2F-HH3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Y5t-yn-5s1"/>
+                    <constraint firstItem="zwe-az-NVL" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="bKl-Yf-ihW"/>
+                    <constraint firstItem="WSy-2F-HH3" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="dcY-HZ-Exf"/>
+                    <constraint firstItem="zwe-az-NVL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ghn-tf-e6B"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="background" destination="zwe-az-NVL" id="s9f-qB-J18"/>
+                <outlet property="dateLabel" destination="ay6-rc-gDe" id="hCk-If-kWj"/>
+                <outlet property="titoloAvviso" destination="97D-VJ-dbT" id="HoP-dy-7S2"/>
+            </connections>
+            <point key="canvasLocation" x="60" y="58.920539730134934"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="timeIcon" width="46.5" height="46.5"/>
+    </resources>
+</document>

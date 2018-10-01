@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchPanelView" customModule="AIR" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="oEt-gV-lcx" id="ieA-C0-x12"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="u6j-0V-Ouo"/>
+                <outlet property="searchButton" destination="gKs-qc-uCQ" id="J3g-P3-Pri"/>
+                <outlet property="switchButton" destination="dup-b9-ZBh" id="Tnu-aE-LCa"/>
+                <outletCollection property="textInputs" destination="DfH-T0-zBb" collectionClass="NSMutableArray" id="aEw-7W-ha3"/>
+                <outletCollection property="textInputs" destination="ZJf-Iq-mcN" collectionClass="NSMutableArray" id="xJH-12-S3y"/>
+                <outletCollection property="textInputs" destination="igW-4s-8kr" collectionClass="NSMutableArray" id="dbp-dN-bzr"/>
+                <outletCollection property="textInputs" destination="N0t-DK-g4u" collectionClass="NSMutableArray" id="25T-zj-3hn"/>
+                <outletCollection property="textInputs" destination="Qg1-bR-lgJ" collectionClass="NSMutableArray" id="olv-t5-Y1g"/>
+                <outletCollection property="fieldLabel" destination="ILc-ae-uHU" collectionClass="NSMutableArray" id="8rw-LX-XBq"/>
+                <outletCollection property="fieldLabel" destination="Aki-xb-Qre" collectionClass="NSMutableArray" id="2y2-cJ-NeI"/>
+                <outletCollection property="fieldLabel" destination="WH3-2a-VLA" collectionClass="NSMutableArray" id="hIh-cX-p34"/>
+                <outletCollection property="fieldLabel" destination="Lfp-ol-yNS" collectionClass="NSMutableArray" id="SBI-cd-lzX"/>
+                <outletCollection property="fieldLabel" destination="Vc0-92-tt1" collectionClass="NSMutableArray" id="Mje-be-7lh"/>
+                <outletCollection property="icons" destination="Evl-tG-lph" collectionClass="NSMutableArray" id="THH-kh-6fY"/>
+                <outletCollection property="icons" destination="znl-e4-031" collectionClass="NSMutableArray" id="Qd3-Tj-YJL"/>
+                <outletCollection property="icons" destination="vK7-X5-mqK" collectionClass="NSMutableArray" id="A9r-wO-KVa"/>
+                <outletCollection property="icons" destination="G3y-Kh-nqX" collectionClass="NSMutableArray" id="pYG-iY-py2"/>
+                <outletCollection property="icons" destination="Fcd-Hl-hht" collectionClass="NSMutableArray" id="dvS-jA-SyM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEt-gV-lcx">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconaBusLight" translatesAutoresizingMaskIntoConstraints="NO" id="Evl-tG-lph">
+                            <rect key="frame" x="16" y="48" width="47" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stazione di Partenza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILc-ae-uHU">
+                            <rect key="frame" x="71" y="48" width="216" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stazione di Partenza" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DfH-T0-zBb">
+                            <rect key="frame" x="71" y="65" width="238" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="go" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes" textContentType="address-level2"/>
+                        </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconaBusLight" translatesAutoresizingMaskIntoConstraints="NO" id="znl-e4-031">
+                            <rect key="frame" x="16" y="154" width="47" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stazione di Arrivo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aki-xb-Qre">
+                            <rect key="frame" x="71" y="154" width="216" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stazione di Arrivo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJf-Iq-mcN">
+                            <rect key="frame" x="71" y="171" width="238" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dateIcon" translatesAutoresizingMaskIntoConstraints="NO" id="vK7-X5-mqK">
+                            <rect key="frame" x="16" y="239" width="47" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Data di Partenza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WH3-2a-VLA">
+                            <rect key="frame" x="71" y="239" width="216" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data di Partenza" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igW-4s-8kr">
+                            <rect key="frame" x="71" y="256" width="238" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="G3y-Kh-nqX">
+                            <rect key="frame" x="16" y="322" width="47" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fascia Oraria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfp-ol-yNS">
+                            <rect key="frame" x="71" y="322" width="216" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fascia Oraria" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N0t-DK-g4u">
+                            <rect key="frame" x="71" y="339" width="238" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stopIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Fcd-Hl-hht">
+                            <rect key="frame" x="16" y="408" width="47" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Numero Cambi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vc0-92-tt1">
+                            <rect key="frame" x="71" y="408" width="216" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Numero Cambi" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qg1-bR-lgJ">
+                            <rect key="frame" x="71" y="425" width="238" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKs-qc-uCQ">
+                            <rect key="frame" x="16" y="486" width="293" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.24313725489999999" green="0.52941176469999995" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                            <state key="normal" title="Cerca">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="searchButton:" destination="-1" eventType="touchUpInside" id="Isw-ns-c37"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dup-b9-ZBh">
+                            <rect key="frame" x="262" y="103" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="switchIcon"/>
+                            <connections>
+                                <action selector="switchButton:" destination="-1" eventType="touchUpInside" id="Zde-k4-dN4"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="oEt-gV-lcx" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="1TB-oQ-mft"/>
+                <constraint firstItem="oEt-gV-lcx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AZD-ZZ-2e1"/>
+                <constraint firstItem="oEt-gV-lcx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bth-mB-ErL"/>
+                <constraint firstItem="oEt-gV-lcx" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="mMo-Tf-TcX"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="31" y="91"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="dateIcon" width="46" height="46"/>
+        <image name="iconaBusLight" width="46" height="46"/>
+        <image name="stopIcon" width="46" height="46"/>
+        <image name="switchIcon" width="117" height="117"/>
+        <image name="timeIcon" width="46" height="46"/>
+    </resources>
+</document>
