@@ -20,13 +20,17 @@ class ViewController: UIViewController,UITableViewDataSource {
         pureLayout()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadViews), name: NSNotification.Name("reload data"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(mostraAvvisi), name: NSNotification.Name("Avvisi"), object: nil)
-        self.navigationController?.navigationBar.isHidden = true
+        
     }
     
     @objc func reloadViews() {
         tableView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
     
     @IBOutlet weak var settingsButton: UIButton!
     

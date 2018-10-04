@@ -36,6 +36,10 @@
 		19119482215C1D3A0092328E /* AvvisiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19119481215C1D3A0092328E /* AvvisiTableViewController.swift */; };
 		19119484215F62BC0092328E /* ImpostazioniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19119483215F62BC0092328E /* ImpostazioniViewController.swift */; };
 		19BC94EE21620A9E003ED8DF /* BiglietterieMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BC94ED21620A9E003ED8DF /* BiglietterieMapViewController.swift */; };
+		19C2355C216241D80070C809 /* Biglietteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C2355B216241D80070C809 /* Biglietteria.swift */; };
+		19DC5F452163580800D5EFB0 /* BiglietteriaAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC5F442163580800D5EFB0 /* BiglietteriaAnnotationView.swift */; };
+		19DC5F472163A84900D5EFB0 /* Biglietterie.json in Resources */ = {isa = PBXBuildFile; fileRef = 19DC5F462163A84900D5EFB0 /* Biglietterie.json */; };
+		19DC5F492163ACD500D5EFB0 /* DecoderBiglietterie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC5F482163ACD500D5EFB0 /* DecoderBiglietterie.swift */; };
 		827952295EF7E5219DF042DE /* Pods_AIRUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A65C9FAE8FB9E650BB0001 /* Pods_AIRUITests.framework */; };
 		D5F961E7264DF3A6E009F374 /* Pods_AIR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797A51A8BE7F64C0B7CFBE44 /* Pods_AIR.framework */; };
 		FD2BF6E1A1C0075B10C259D4 /* Pods_AIRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197B72A78AA3E82EB16BD563 /* Pods_AIRTests.framework */; };
@@ -92,10 +96,14 @@
 		05AE3F522138219C00D4A5F2 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		05AE3F5421394F5200D4A5F2 /* RicercaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RicercaViewController.swift; sourceTree = "<group>"; };
 		05C03162213F21EF00891155 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		19119481215C1D3A0092328E /* AvvisiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvvisiTableViewController.swift; sourceTree = "<group>"; };
+		19119481215C1D3A0092328E /* AvvisiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvvisiTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		19119483215F62BC0092328E /* ImpostazioniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpostazioniViewController.swift; sourceTree = "<group>"; };
 		197B72A78AA3E82EB16BD563 /* Pods_AIRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AIRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BC94ED21620A9E003ED8DF /* BiglietterieMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiglietterieMapViewController.swift; sourceTree = "<group>"; };
+		19C2355B216241D80070C809 /* Biglietteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biglietteria.swift; sourceTree = "<group>"; };
+		19DC5F442163580800D5EFB0 /* BiglietteriaAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiglietteriaAnnotationView.swift; sourceTree = "<group>"; };
+		19DC5F462163A84900D5EFB0 /* Biglietterie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Biglietterie.json; sourceTree = "<group>"; };
+		19DC5F482163ACD500D5EFB0 /* DecoderBiglietterie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderBiglietterie.swift; sourceTree = "<group>"; };
 		20BECF65B3F0CE69CB2A394E /* Pods-AIR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIR/Pods-AIR.debug.xcconfig"; sourceTree = "<group>"; };
 		47A65C9FAE8FB9E650BB0001 /* Pods_AIRUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AIRUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B1626722A45280F26B02E4 /* Pods-AIRUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIRUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIRUITests/Pods-AIRUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,8 +185,8 @@
 		056F7017213348910042493C /* AIR */ = {
 			isa = PBXGroup;
 			children = (
-				056F706521358F560042493C /* Singleton */,
 				056F7018213348910042493C /* AppDelegate.swift */,
+				056F706521358F560042493C /* Singleton */,
 				056F705B21356CFB0042493C /* Controller */,
 				056F705A21356CDF0042493C /* View */,
 				056F705921356CD10042493C /* Model */,
@@ -186,6 +194,7 @@
 				056F7027213348930042493C /* Info.plist */,
 				056F701F213348910042493C /* AIR.xcdatamodeld */,
 				056F706821361F900042493C /* AIR-Bridging-Header.h */,
+				19DC5F462163A84900D5EFB0 /* Biglietterie.json */,
 			);
 			path = AIR;
 			sourceTree = "<group>";
@@ -214,6 +223,7 @@
 				051CE205213D498800656F84 /* searchPanelView */,
 				056F7054213569B30042493C /* TableView */,
 				05AE3F522138219C00D4A5F2 /* ShadowView.swift */,
+				19DC5F442163580800D5EFB0 /* BiglietteriaAnnotationView.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -254,6 +264,7 @@
 			children = (
 				056F705E213588820042493C /* Tratta.swift */,
 				056F7060213589A20042493C /* Avviso.swift */,
+				19C2355B216241D80070C809 /* Biglietteria.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +296,7 @@
 				056F706321358E7A0042493C /* Constants.swift */,
 				056F706621358F690042493C /* Utente.swift */,
 				05C03162213F21EF00891155 /* APIManager.swift */,
+				19DC5F482163ACD500D5EFB0 /* DecoderBiglietterie.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -432,6 +444,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19DC5F472163A84900D5EFB0 /* Biglietterie.json in Resources */,
 				051CE20A213DC26F00656F84 /* CorsaCell.xib in Resources */,
 				056F7026213348930042493C /* LaunchScreen.storyboard in Resources */,
 				059CE450213AB12300225260 /* SearchPanelView.xib in Resources */,
@@ -549,15 +562,18 @@
 				056F706721358F690042493C /* Utente.swift in Sources */,
 				056F7019213348910042493C /* AppDelegate.swift in Sources */,
 				19119482215C1D3A0092328E /* AvvisiTableViewController.swift in Sources */,
+				19C2355C216241D80070C809 /* Biglietteria.swift in Sources */,
 				19BC94EE21620A9E003ED8DF /* BiglietterieMapViewController.swift in Sources */,
 				05AE3F532138219C00D4A5F2 /* ShadowView.swift in Sources */,
 				0596C00F213FF3210039F0C1 /* AvvisoGrandeCell.swift in Sources */,
 				056F7052213557060042493C /* MainTableHeaderView.swift in Sources */,
+				19DC5F452163580800D5EFB0 /* BiglietteriaAnnotationView.swift in Sources */,
 				056F705821356A3B0042493C /* AvvisoCell.swift in Sources */,
 				051CE209213DC26F00656F84 /* CorsaCell.swift in Sources */,
 				056F7061213589A20042493C /* Avviso.swift in Sources */,
 				19119484215F62BC0092328E /* ImpostazioniViewController.swift in Sources */,
 				056F706421358E7A0042493C /* Constants.swift in Sources */,
+				19DC5F492163ACD500D5EFB0 /* DecoderBiglietterie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

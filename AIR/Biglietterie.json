@@ -1,0 +1,213 @@
+{
+    "biglietterie": [
+        
+        {
+            "località": "Altavilla Irpina (AV)",
+            "coordinate": "41°00'16.0\"N 14°46'36.9\"E",
+            "Latitudine": 41.004444444444445,
+            "Longitudine": 14.776916666666667,
+            "Indirizzo": "Viale S. Francesco d'Assisi, 71",
+            "Nome": "Esna Tour di Cola Valentina"
+        },
+        {
+            "località": "Ariano Irpino (AV)",
+            "coordinate": "41°08'22.6\"N 15°04'56.0\"E",
+            "Latitudine": 41.13961111111111,
+            "Longitudine": 15.082222222222223,
+            "Indirizzo": "Via Cardito, 52/4",
+            "Nome": "Partiamo Per Il Mondo"
+        },
+        {
+            "località": "Avellino",
+            "coordinate": "40°55'00.1\"N 14°47’25.5",
+            "Latitudine": 40.916694444444445,
+            "Longitudine": 14.790416666666667,
+            "Indirizzo": "Via Tuoro Cappuccini, 13",
+            "Nome": "D'Ascoli Tours"
+        },
+        {
+            "località": "Avellino",
+            "coordinate": "40°54'51.1\"N 14°47'32.9\"E",
+            "Latitudine": 40.91419444444445,
+            "Longitudine": 14.792472222222223,
+            "Indirizzo": "Via Verdi, 9",
+            "Nome": "Roulette Agency"
+        },
+        {
+            "località": "Avellino",
+            "coordinate": "40°55'09.0\"N 14°47'15.8\"E",
+            "Latitudine": 40.91916666666667,
+            "Longitudine": 14.787722222222222,
+            "Indirizzo": "Via C. De Balzo",
+            "Nome": "GZ Group (Bar Excelsior)"
+        },
+        {
+            "località": "Avellino",
+            "coordinate": "40°55'06.2\"N 14°47'30.8\"E",
+            "Latitudine": 40.91838888888889,
+            "Longitudine": 14.79188888888889,
+            "Indirizzo": "Piazza Libertà, 56",
+            "Nome": "Irpiniatour S.r.l."
+        },
+        {
+            "località": "Avellino",
+            "coordinate": "40°54'51.9\"N 14°47'16.5\"E",
+            "Latitudine": 40.91441666666667,
+            "Longitudine": 14.787916666666666,
+            "Indirizzo": "Via Piave, 170",
+            "Nome": "Bieffe S.r.l"
+        },
+        {
+            "località": "Chieti Scalo",
+            "coordinate": "42°21'26.7\"N 14°08'19.3\"E",
+            "Latitudine": 42.357416666666666,
+            "Longitudine": 14.138694444444445,
+            "Indirizzo": "P.le Marconi staz. FF.SS.",
+            "Nome": "Edicola Iervese"
+        },
+        {
+            "località": "Grottaminarda (AV)",
+            "coordinate": "41°04'11.8\"N 15°03'34.7\"E",
+            "Latitudine": 41.074083333333334,
+            "Longitudine": 15.05963888888889,
+            "Indirizzo": "De Prizio Travel S.r.l.",
+            "Nome": "Via Pietro Nenni, 17"
+        },
+        {
+            "località": "L’Aquila",
+            "coordinate": "42°21'37.5\"N 13°22'34.5\"E",
+            "Latitudine": 41.360416666666666,
+            "Longitudine": 13.37625,
+            "Indirizzo": "S.S. 17 Ovest, 6",
+            "Nome": "Cartoleria Fantasy"
+        },
+        {
+            "località": "Mirabella Eclano (AV)",
+            "coordinate": "41°02'46.9\"N 15°00'14.8\"E",
+            "Latitudine": 41.04636111111111,
+            "Longitudine": 15.009483333333334,
+            "Indirizzo": "Via Sant'Angelo, 124",
+            "Nome": "DS Service"
+        },
+        {
+            "località": "Montella (AV)",
+            "coordinate": "40°50'31.6\"N 15°01'22.5\"E",
+            "Latitudine": 40.84211111111111,
+            "Longitudine": 15.022916666666667,
+            "Indirizzo": "Via Dietro Corte, 12",
+            "Nome": "Mille Meraviglie"
+        },
+        {
+            "località": "Pescara",
+            "coordinate": "42°28'14.3\"N 14°12'20.0\"E",
+            "Latitudine": 42.47063888888889,
+            "Longitudine": 14.205555555555556,
+            "Indirizzo": "Piazza Della Repubblica",
+            "Nome": "Sistema S.p.A"
+        },
+        {
+            "località": "Roma",
+            "coordinate": "41°54'24.6\"N 12°27'37.8\"E",
+            "Latitudine": 41.90683333333333,
+            "Longitudine": 12.4605,
+            "Indirizzo": "Via Guido Mazzoni, 12/14",
+            "Nome": "Piccarozzi S.r.l."
+        },
+        {
+            "località": "Sant’ Angelo dei Lombardi (AV)",
+            "coordinate": "40°55'37.8\"N 15°10'51.6\"E",
+            "Latitudine": 40.927166666666665,
+            "Longitudine": 15.181,
+            "Indirizzo": "Piazza Nobile, 1",
+            "Nome": "Bellusci Gerarda"
+        },
+        {
+            "località": "Solofra (AV)",
+            "coordinate": "40°49'55.4\"N 14°50'53.4\"E",
+            "Latitudine": 40.832055555555556,
+            "Longitudine": 14.848166666666668,
+            "Indirizzo": "Via G. Maffei, 9",
+            "Nome": "Tramp Viaggi S.a.s"
+        },
+        {
+            "località": "Sora (FR)",
+            "coordinate": "41°43'01.8\"N 13°37'02.6\"E",
+            "Latitudine": 41.717166666666664,
+            "Longitudine": 13.61738888888889,
+            "Indirizzo": "Via XX Settembre, 52",
+            "Nome": "eASTERIX Viaggi"
+        },
+        {
+            "località": "Arzano Di Puglia (FG)",
+            "coordinate": "41°07'20.0\"N 15°17'03.2\"E",
+            "Latitudine": 41.12222222222222,
+            "Longitudine": 15.284222222222223,
+            "Indirizzo": "Via Statale, 91 Bis",
+            "Nome": "Del Gaudio Rocco"
+        },
+        {
+            "località": "Benevento",
+            "coordinate": "41°08'08.5\"N 14°46'26.9\"E",
+            "Latitudine": 41.13569444444445,
+            "Longitudine": 14.774138888888888,
+            "Indirizzo": "Viale dei Rettori",
+            "Nome": "Liguori Mario Snak Bar Terminal"
+        },
+        {
+            "località": "Campobasso",
+            "coordinate": "41°33'23.4\"N 14°39'50.6\"E",
+            "Latitudine": 41.5565,
+            "Longitudine": 14.664055555555555,
+            "Indirizzo": "Piazza Padre Pio",
+            "Nome": "D'Elisiis Angelo"
+        },
+        {
+            "località": "Fisciano (SA)",
+            "coordinate": "40°46'48.4\"N 14°46'45.5\"E",
+            "Latitudine": 40.78011111111111,
+            "Longitudine": 14.779305555555556,
+            "Indirizzo": "Strada Prov. Ponte Don Melillo",
+            "Nome": "Galdi Eugenia"
+        },
+        {
+            "località": "Fisciano Terminal Unisa",
+            "coordinate": "40°46'25.9\"N 14°47'33.4\"E",
+            "Latitudine": 40.77386111111111,
+            "Longitudine": 14.79261111111111,
+            "Indirizzo": "Via Monfalcone, 5",
+            "Nome": "Pot S.r.l."
+        },
+        {
+            "località": "Foggia",
+            "coordinate": "41°27'54.4\"N 15°33'17.2\"E",
+            "Latitudine": 41.46511111111111,
+            "Longitudine": 15.554777777777778,
+            "Indirizzo": "Stazione F.S.",
+            "Nome": "Ricagni Veronica e Valeria Libreria"
+        },
+        {
+            "località": "Foggia",
+            "coordinate": "41°27'51.6\"N 15°33'12.7\"E",
+            "Latitudine": 41.464333333333336,
+            "Longitudine": 15.553527777777777,
+            "Indirizzo": "Viale XXIV Maggio, 81",
+            "Nome": "Kiwi Bar"
+        },
+        {
+            "località": "Salerno",
+            "coordinate": "40°40'31.0\"N 14°46'20.3\"E",
+            "Latitudine": 40.67527777777778,
+            "Longitudine": 14.772305555555555,
+            "Indirizzo": "Piazza V. Veneto, 19/20/21",
+            "Nome": "Il Globo Celeste Di Giemme"
+        },
+        {
+            "località": "Salerno",
+            "coordinate": "40°40'27.8\"N 14°46'37.0\"E",
+            "Latitudine": 40.67438888888889,
+            "Longitudine": 14.776944444444444,
+            "Indirizzo": "Via D. Castelluccio, 17",
+            "Nome": "Tabacchi di Labadia Salvatore"
+        }
+    ]
+}

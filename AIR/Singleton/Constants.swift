@@ -7,9 +7,10 @@
 //
 
 import Foundation
-
+import MapKit
 enum Bacheca{
     static var avvisi:[FeedResponse.Item] = []
+    static var biglietterie: [Biglietterie.Biglietteria] = []
 }
 
 enum Constants{
@@ -59,9 +60,7 @@ enum FakeData{
     static let tratta1 = Tratta(da: "Avellino - P.zza Kennedy", a: "Grottaminarda")
     static let tratta2 = Tratta(da: "Monteforte Irpino", a: "Avellino - Stazione")
     static let tratta3 = Tratta(da: "Summonte", a: "Trevico")
-    static let avviso1 = Avviso("Cancellata tratta Avellino - Napoli", URL: "https://", foto: nil, pubblicatoIl: Date())
-    static let avviso2 = Avviso("Corse annullate il 28/07", URL: "https://AIR.it", foto: nil, pubblicatoIl: Date())
-    static let avviso3 = Avviso("SLG Batte ancora una volta un autista, in pullman, mentre guida.", URL:"http://AIR.it",foto:nil,pubblicatoIl: Date())
+    
 }
 
 
@@ -79,4 +78,8 @@ extension UINavigationController{
     var isNavigationBarHidden:Bool{
         return true
     }
+}
+
+enum Exception:Error{
+    case userLocationUnavailable
 }

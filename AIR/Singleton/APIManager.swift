@@ -83,7 +83,6 @@ struct FeedResponse: Codable{
             case title = "title"
             case pubDate = "pubDate"
             case link = "link"
-          
             case description = "description"
             
         }
