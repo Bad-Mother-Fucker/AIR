@@ -14,7 +14,12 @@ class AvvisiTableViewController: UIViewController,UITableViewDataSource,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
+        
+//        tableView.scrollToRowAtIndexPath(IndexPath, atScrollPosition: .Bottom ,animated: true)
+        
     }
+   
+    
     
     @IBAction func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -33,7 +38,9 @@ class AvvisiTableViewController: UIViewController,UITableViewDataSource,UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableViewAvvisi.scrollToRow(at: indexPath, at: .bottom, animated: false)
+      
     }
     
  
@@ -67,6 +74,7 @@ class AvvisiTableViewController: UIViewController,UITableViewDataSource,UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "avvisoGrandeCell", for: indexPath) as! AvvisoGrandeCell
         cell.setCell(perAvviso: Bacheca.avvisi[indexPath.row])
+        
         return cell
     }
     

@@ -14,6 +14,15 @@ import Contacts
 class BiglietterieMapViewController: UIViewController {
     
     @IBOutlet weak var mappa: MKMapView!
+    @IBOutlet weak var elenco: UITableView!
+    
+    
+    var segmentedControl: UISegmentedControl!
+    let biglietterie = DecoderBiglietteria.loadBiglietterieDaFile(conNome: "Biglietterie")
+    let filterButton = UIBarButtonItem(image: UIImage(imageLiteralResourceName: "raggio di azione"), style:.plain, target: self, action: #selector(filterResults))
+
+  
+
     
     
     var initialLocation: (CLLocation, CLLocationDistance) {
@@ -38,7 +47,7 @@ class BiglietterieMapViewController: UIViewController {
     
     
     private func addAnnotationsData(fromFileNamed fileName: String) {
-        if let biglietterie = DecoderBiglietteria.loadBiglietterieDaFile(conNome: fileName){
+        if let biglietterie = self.biglietterie{
             for biglietteria in biglietterie{
                 let annotation = Biglietteria(nome: biglietteria.nome, indirizzo: biglietteria.indirizzo, coordinate: CLLocationCoordinate2D(latitude: biglietteria.latitudine, longitude: biglietteria.longitudine),località: biglietteria.località)
                 mappa.addAnnotation(annotation)
@@ -130,9 +139,30 @@ class BiglietterieMapViewController: UIViewController {
     }
     private func setSegmentedControl(){
         let items = ["Mappa", "Elenco"]
-        let segmentedControl = UISegmentedControl(items: items)
+        segmentedControl = UISegmentedControl(items: items)
         segmentedControl.selectedSegmentIndex = 0
+        elenco.isHidden = true
+        segmentedControl.addTarget(self, action: #selector(segmentedControlTapped), for: .valueChanged)
         navigationItem.titleView = segmentedControl
+    }
+    
+    @objc func segmentedControlTapped(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            navigationItem.rightBarButtonItem = nil
+            elenco.isHidden = true
+            mappa.isHidden = false
+        case 1:
+            navigationItem.rightBarButtonItem = filterButton
+            elenco.isHidden = false
+            mappa.isHidden = true
+            
+        default:
+            break
+        }
+    }
+    
+    @objc func filterResults(){
         
     }
     
@@ -141,32 +171,24 @@ class BiglietterieMapViewController: UIViewController {
         setNavBar()
         startLocationUpdate()
         mappa.delegate = self
+        elenco.delegate = self
+        elenco.dataSource = self
         mappa.register(BiglietteriaAnnotationView.self,
                        forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         mappa.showsScale = true
         addAnnotationsData(fromFileNamed: "Biglietterie")
         setSegmentedControl()
         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setNavBar()
         centerMap(onLocation: initialLocation.0,radius:initialLocation.1,animated:true)
     }
     
- 
-    
-    
 }
-
-
-
-
-
-
-
-
-
 
 extension BiglietterieMapViewController: CLLocationManagerDelegate {
     
@@ -218,7 +240,6 @@ extension BiglietterieMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let biglietteria = view.annotation as? Biglietteria else{return}
         var mode = MKLaunchOptionsDirectionsModeDriving
-    
         
         do{
             let distance = try distanceFrom(biglietteria)
@@ -231,6 +252,62 @@ extension BiglietterieMapViewController: MKMapViewDelegate {
         }catch {
             print(error.localizedDescription)
         }
-        biglietteria.mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey:mode])
+        
+        let alert = UIAlertController(title: "Apri in mappe", message: "Vuoi aprire mappe e navigare verso il punto di interesse?", preferredStyle: .alert)
+        
+        
+        let action = UIAlertAction(title: "Ok", style: .default) { _ in
+             biglietteria.mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey:mode])
+        }
+        let cancel = UIAlertAction(title: "Annulla", style: .cancel) { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(action)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+
+extension BiglietterieMapViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return biglietterie?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let biglietterie = self.biglietterie {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "biglietteria", for: indexPath)
+            let l1 = cell.viewWithTag(1) as! UILabel
+            let l2 = cell.viewWithTag(2) as! UILabel
+            l1.text = biglietterie[indexPath.row].nome
+            l2.text = "\(biglietterie[indexPath.row].indirizzo) - \(biglietterie[indexPath.row].località)"
+            cell.accessoryView = AccessoryButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    
+    
+    
+    
+}
+
+fileprivate class AccessoryButton: UIButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addTarget(self, action: #selector(accessoryButtonTapped), for: .touchUpInside)
+        setImage(UIImage(named: "allarme.png"), for: .normal)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    
+    
+    @objc func accessoryButtonTapped(sender: UIButton){
+        
     }
 }
