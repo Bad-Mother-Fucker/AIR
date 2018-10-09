@@ -11,7 +11,7 @@ import MapKit
 
 class DecoderBiglietteria{
     
-    static func loadBiglietterieDaFile(conNome nome: String) -> [Biglietterie.Biglietteria]? {
+    static func loadBiglietterieDaFile(conNome nome: String) -> [Biglietteria]? {
     
         if let url = Bundle.main.url(forResource: nome, withExtension: "json") {
             do {
@@ -27,32 +27,24 @@ class DecoderBiglietteria{
         
         return nil
     }
-    
-    
-    
+
 }
 
 
-
-
-
-
-
-struct Biglietterie: Codable{
-    struct Biglietteria: Codable {
-        var località: String
-        var latitudine: CLLocationDegrees
-        var longitudine: CLLocationDegrees
-        var indirizzo: String
-        var nome: String
-        
-        enum CodingKeys: String,CodingKey{
-             case località = "località"
-             case latitudine = "Latitudine"
-             case longitudine = "Longitudine"
-             case indirizzo = "Indirizzo"
-             case nome = "Nome"
-        }
+class Biglietterie: Decodable{
+    
+   
+    enum CodingKeys: String, CodingKey{
+        case biglietterie = "biglietterie"
     }
+    
+    
+    
+    required init(from decoder:Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        biglietterie = try values.decode([Biglietteria].self, forKey: .biglietterie)
+        
+    }
+    
     var biglietterie: [Biglietteria]
 }

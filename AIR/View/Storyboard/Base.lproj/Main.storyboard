@@ -256,14 +256,14 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="DWh-3a-nio" firstAttribute="leading" secondItem="QDD-HQ-oRb" secondAttribute="leadingMargin" id="IKv-aW-23f"/>
-                                                <constraint firstItem="YTC-Yq-QNI" firstAttribute="top" secondItem="DWh-3a-nio" secondAttribute="bottom" id="bQX-Vk-ZOx"/>
-                                                <constraint firstItem="DWh-3a-nio" firstAttribute="trailing" secondItem="QDD-HQ-oRb" secondAttribute="trailingMargin" id="bUa-h2-V4w"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="YTC-Yq-QNI" secondAttribute="bottom" constant="18" id="nqg-go-9V0"/>
-                                                <constraint firstItem="DWh-3a-nio" firstAttribute="top" secondItem="QDD-HQ-oRb" secondAttribute="topMargin" id="r2C-re-cnc"/>
-                                                <constraint firstItem="YTC-Yq-QNI" firstAttribute="trailing" secondItem="QDD-HQ-oRb" secondAttribute="trailingMargin" id="wrq-i8-ucG"/>
-                                                <constraint firstItem="YTC-Yq-QNI" firstAttribute="top" secondItem="DWh-3a-nio" secondAttribute="bottom" id="xof-xV-Ovm"/>
-                                                <constraint firstItem="YTC-Yq-QNI" firstAttribute="leading" secondItem="QDD-HQ-oRb" secondAttribute="leadingMargin" id="zks-8F-9Ie"/>
+                                                <constraint firstItem="YTC-Yq-QNI" firstAttribute="leading" secondItem="QDD-HQ-oRb" secondAttribute="leadingMargin" id="0kp-cq-zYc"/>
+                                                <constraint firstItem="DWh-3a-nio" firstAttribute="trailing" secondItem="QDD-HQ-oRb" secondAttribute="trailingMargin" id="0lT-aS-Esv"/>
+                                                <constraint firstItem="DWh-3a-nio" firstAttribute="top" secondItem="QDD-HQ-oRb" secondAttribute="topMargin" id="2eh-ok-Ze0"/>
+                                                <constraint firstItem="YTC-Yq-QNI" firstAttribute="trailing" secondItem="QDD-HQ-oRb" secondAttribute="trailingMargin" id="At5-Ne-H2d"/>
+                                                <constraint firstItem="DWh-3a-nio" firstAttribute="leading" secondItem="QDD-HQ-oRb" secondAttribute="leadingMargin" id="IA8-R2-Pem"/>
+                                                <constraint firstItem="YTC-Yq-QNI" firstAttribute="top" secondItem="DWh-3a-nio" secondAttribute="bottom" id="khA-8t-Fp1"/>
+                                                <constraint firstItem="YTC-Yq-QNI" firstAttribute="top" secondItem="DWh-3a-nio" secondAttribute="bottom" id="wRg-Yg-2mK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="YTC-Yq-QNI" secondAttribute="bottom" constant="18" id="yjx-dG-HG2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -286,11 +286,62 @@
                     <connections>
                         <outlet property="elenco" destination="NkD-xI-Gyp" id="VCT-ab-iig"/>
                         <outlet property="mappa" destination="sN2-xR-oTK" id="s1F-ec-L5C"/>
+                        <segue destination="vsg-r6-1Xx" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="V43-Sf-zfj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6f-Cg-6zb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973.60000000000002" y="-674.6305418719212"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dby-8q-LGN">
+            <objects>
+                <viewController storyboardIdentifier="filtraRisultati" id="vsg-r6-1Xx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3LW-ft-lxu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHS-6I-9EJ">
+                                <rect key="frame" x="16" y="277" width="343" height="172"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="jGG-me-WWN">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="172"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filtra i risultati per distanza" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-C6-1bD">
+                                        <rect key="frame" x="8" y="8" width="327" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KgG-Fh-c1T">
+                                        <rect key="frame" x="14" y="60" width="314" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="minimumTrackTintColor" red="0.29578104620000001" green="0.51338404419999994" blue="0.6941407919" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92400103807449341" green="0.97487026453018188" blue="0.93431127071380615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="jGG-me-WWN" secondAttribute="trailing" id="E8O-dC-Yoh"/>
+                                    <constraint firstAttribute="bottom" secondItem="jGG-me-WWN" secondAttribute="bottom" id="RLe-tv-UZf"/>
+                                    <constraint firstItem="jGG-me-WWN" firstAttribute="top" secondItem="fHS-6I-9EJ" secondAttribute="top" id="eT9-sV-eGu"/>
+                                    <constraint firstItem="jGG-me-WWN" firstAttribute="leading" secondItem="fHS-6I-9EJ" secondAttribute="leading" id="nlF-nc-TU0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.63344520246478875" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fHS-6I-9EJ" firstAttribute="trailing" secondItem="3LW-ft-lxu" secondAttribute="trailingMargin" id="V33-8B-1uT"/>
+                            <constraint firstItem="J3L-yc-5uN" firstAttribute="bottom" secondItem="fHS-6I-9EJ" secondAttribute="bottom" constant="329" id="XzE-oj-9DP"/>
+                            <constraint firstItem="fHS-6I-9EJ" firstAttribute="top" secondItem="J3L-yc-5uN" secondAttribute="top" constant="233" id="fuu-D8-Ogg"/>
+                            <constraint firstItem="fHS-6I-9EJ" firstAttribute="leading" secondItem="3LW-ft-lxu" secondAttribute="leadingMargin" id="rEs-fI-fmH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="J3L-yc-5uN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="plx-Qe-Keq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1762" y="-834"/>
         </scene>
         <!--Impostazioni View Controller-->
         <scene sceneID="g9H-Ug-HJE">
@@ -540,6 +591,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="125" height="271"/>
         <image name="background-1" width="125" height="271.33334350585938"/>
         <image name="iconaBus" width="132.33332824707031" height="131.33332824707031"/>
         <image name="settingsButton" width="118.66666412353516" height="118.66666412353516"/>

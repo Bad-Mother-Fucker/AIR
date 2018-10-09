@@ -18,8 +18,8 @@ class BiglietterieMapViewController: UIViewController {
     
     
     var segmentedControl: UISegmentedControl!
-    let biglietterie = DecoderBiglietteria.loadBiglietterieDaFile(conNome: "Biglietterie")
-    let filterButton = UIBarButtonItem(image: UIImage(imageLiteralResourceName: "raggio di azione"), style:.plain, target: self, action: #selector(filterResults))
+    let biglietterie = Constants.biglietterie
+    let filterButton = UIBarButtonItem(image: UIImage(imageLiteralResourceName: "raggio di azione"), style:.plain, target: self, action: #selector(filterResults(_ :)))
 
   
 
@@ -162,8 +162,9 @@ class BiglietterieMapViewController: UIViewController {
         }
     }
     
-    @objc func filterResults(){
-        
+    @objc func filterResults(_ sender: UIBarButtonItem){
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "filtraRisultati")
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -178,6 +179,7 @@ class BiglietterieMapViewController: UIViewController {
         mappa.showsScale = true
         addAnnotationsData(fromFileNamed: "Biglietterie")
         setSegmentedControl()
+        
         
         
     }
@@ -227,45 +229,11 @@ extension BiglietterieMapViewController: CLLocationManagerDelegate {
 
 extension BiglietterieMapViewController: MKMapViewDelegate {
     
-    
-    func distanceFrom(_ annotation: Biglietteria) throws -> Double{
-        let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-        guard let userLoc = CLLocationManager().location else {throw Exception.userLocationUnavailable  }
-        return userLoc.distance(from: location)
-    }
-    
-    
-    
+
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let biglietteria = view.annotation as? Biglietteria else{return}
-        var mode = MKLaunchOptionsDirectionsModeDriving
-        
-        do{
-            let distance = try distanceFrom(biglietteria)
-            if distance < 2000 {
-                mode = MKLaunchOptionsDirectionsModeWalking
-            }
-        }catch Exception.userLocationUnavailable {
-            mode = MKLaunchOptionsDirectionsModeDefault
-            
-        }catch {
-            print(error.localizedDescription)
-        }
-        
-        let alert = UIAlertController(title: "Apri in mappe", message: "Vuoi aprire mappe e navigare verso il punto di interesse?", preferredStyle: .alert)
-        
-        
-        let action = UIAlertAction(title: "Ok", style: .default) { _ in
-             biglietteria.mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey:mode])
-        }
-        let cancel = UIAlertAction(title: "Annulla", style: .cancel) { _ in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        
-        alert.addAction(action)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
+        biglietteria.apriInMappe(fromViewController: self)
     }
 }
 
@@ -282,7 +250,7 @@ extension BiglietterieMapViewController: UITableViewDelegate, UITableViewDataSou
             let l2 = cell.viewWithTag(2) as! UILabel
             l1.text = biglietterie[indexPath.row].nome
             l2.text = "\(biglietterie[indexPath.row].indirizzo) - \(biglietterie[indexPath.row].località)"
-            cell.accessoryView = AccessoryButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+            cell.accessoryView = AccessoryButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30),forIndexPath: indexPath,parent: self)
             return cell
         }
         return UITableViewCell()
@@ -295,19 +263,30 @@ extension BiglietterieMapViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 fileprivate class AccessoryButton: UIButton {
-    override init(frame: CGRect) {
+    private var biglietterie = Constants.biglietterie ?? []
+    private var indexPath: IndexPath
+    private var parent: UIViewController
+    
+    
+    init(frame: CGRect,forIndexPath indexPath: IndexPath,parent: UIViewController) {
+        self.indexPath = indexPath
+        self.parent = parent
         super.init(frame: frame)
         addTarget(self, action: #selector(accessoryButtonTapped), for: .touchUpInside)
-        setImage(UIImage(named: "allarme.png"), for: .normal)
+        setImage(UIImage(named: "location.png"), for: .normal)
+      
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
+    
     
     
     
     @objc func accessoryButtonTapped(sender: UIButton){
-        
+        guard let biglietterie = DecoderBiglietteria.loadBiglietterieDaFile(conNome: "Biglietterie") else {return}
+        let biglietteria = biglietterie[indexPath.row]
+        biglietteria.apriInMappe(fromViewController: parent)
     }
 }

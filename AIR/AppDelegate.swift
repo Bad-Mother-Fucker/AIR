@@ -22,17 +22,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Utente.shared.aggiungiAiPreferiti(FakeData.tratta1)
         Utente.shared.aggiungiAiPreferiti(FakeData.tratta2)
         Utente.shared.aggiungiAiPreferiti(FakeData.tratta3)
+        
         APIManager.shared.aggiornaAvvisi(onSuccess: { (response) in
             DispatchQueue.main.async {
                 Bacheca.avvisi.append(contentsOf: response.items)
-                print(Bacheca.avvisi.count)
+                
                 NotificationCenter.default.post(Notification(name: NSNotification.Name("reload data"), object: nil))
             }
         }) { (error) in
-            DispatchQueue.main.async {
-                
-            }
+
         }
+        
+            let shortcut1 = UIMutableApplicationShortcutItem(type: "Cerca Orari", localizedTitle: NSLocalizedString("Cerca Orari", comment: ""), localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "search"), userInfo: nil)
+        
+            let shortcut2 = UIMutableApplicationShortcutItem(type: "Biglietterie", localizedTitle: NSLocalizedString("Biglietterie", comment: ""), localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "tickets"), userInfo: nil)
+        
+            let shortcut3 = UIMutableApplicationShortcutItem(type: "Avvisi", localizedTitle: NSLocalizedString("Avvisi", comment: ""), localizedSubtitle: "", icon: UIApplicationShortcutIcon(templateImageName: "allarmeShortcut"), userInfo: nil)
+        
+            application.shortcutItems = [shortcut1, shortcut2, shortcut3]
+        
         return true
     }
 

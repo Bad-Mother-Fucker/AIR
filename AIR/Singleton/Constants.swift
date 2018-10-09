@@ -10,11 +10,12 @@ import Foundation
 import MapKit
 enum Bacheca{
     static var avvisi:[FeedResponse.Item] = []
-    static var biglietterie: [Biglietterie.Biglietteria] = []
+    static var biglietterie: [Biglietteria] = []
 }
 
 enum Constants{
     static var screenScale = CGSize(width: UIScreen.main.bounds.width / CGFloat(375), height: UIScreen.main.bounds.height / CGFloat(667))
+    static var biglietterie = DecoderBiglietteria.loadBiglietterieDaFile(conNome: "Biglietterie")
 }
 
 
