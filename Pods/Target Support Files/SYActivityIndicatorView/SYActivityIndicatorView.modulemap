@@ -1,0 +1,6 @@
+framework module SYActivityIndicatorView {
+  umbrella header "SYActivityIndicatorView-umbrella.h"
+
+  export *
+  module * { export * }
+}

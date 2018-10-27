@@ -1,0 +1,6 @@
+framework module Pods_AIRTests {
+  umbrella header "Pods-AIRTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

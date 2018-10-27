@@ -1,0 +1,20 @@
+PODS:
+  - PureLayout (3.1.2)
+  - SYActivityIndicatorView (0.0.4)
+
+DEPENDENCIES:
+  - PureLayout
+  - SYActivityIndicatorView (~> 0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PureLayout
+    - SYActivityIndicatorView
+
+SPEC CHECKSUMS:
+  PureLayout: 4634d0b61e3b5021166e8ec7c18e9e0ca0720c8b
+  SYActivityIndicatorView: 2c7a393c161eb67e3b31846a73cf5aca2b9dbf72
+
+PODFILE CHECKSUM: a24512a7ba0f0da709e0c9da37726dcc6329a4eb
+
+COCOAPODS: 1.5.3

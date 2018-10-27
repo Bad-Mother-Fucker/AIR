@@ -13,7 +13,7 @@ import MapKit
 enum Bacheca{
     static var avvisi:[FeedResponse.Item] = []
     static var biglietterie: [Biglietteria] = []
-    static var isDarkModeEnabled: Bool = true
+    static var isDarkModeEnabled: Bool = false
 }
 
 enum Colors{
