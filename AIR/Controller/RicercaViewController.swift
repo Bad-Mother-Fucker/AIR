@@ -13,6 +13,8 @@ class RicercaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pureLayout()
+        NotificationCenter.default.addObserver(self, selector: #selector(enableDarkMode), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disableDarkMode), name: .darkModeDisabled, object: nil)
         
     }
 
@@ -88,4 +90,15 @@ extension RicercaViewController:UIPickerViewDelegate,UIPickerViewDataSource{
         backgroundView.didSelectRow(at: row, forPickerView: pickerView)
     }
 
+}
+extension RicercaViewController: DarkModeDelegate{
+    func didEnableDarkMode() {
+        
+    }
+    
+    func didDisableDarkMode() {
+        
+    }
+    
+    
 }

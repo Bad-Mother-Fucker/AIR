@@ -43,7 +43,6 @@ class SearchPanelView: UIView {
     }
     
     private func commonInit(){
-        
         Bundle.main.loadNibNamed("SearchPanelView", owner: self, options: nil)
         addSubview(contentView)
     }
@@ -106,7 +105,7 @@ class SearchPanelView: UIView {
             "Fascia Oraria": textInputs[3].text!,
             "Numero Cambi": textInputs[4].text!
         ]
-        //HTTPSession.shared.sendRequest(withData: dati)
+//        HTTPSession.shared.sendRequest(withData: dati)
     }
     
     
@@ -155,7 +154,8 @@ class SearchPanelView: UIView {
         
         
         searchButton.autoPinEdge(.left, to: .left, of: icons[4])
-        searchButton.autoPinEdge(.right, to: .right, of: textInputs[4])
+//        searchButton.autoPinEdge(.right, to: .right, of: textInputs[4])
+        searchButton.autoPinEdge(toSuperviewEdge: .right, withInset: 20)
         searchButton.autoPinEdge(toSuperviewEdge: .bottom, withInset: 60)
         searchButton.autoSetDimension(.height, toSize: 60)
     }

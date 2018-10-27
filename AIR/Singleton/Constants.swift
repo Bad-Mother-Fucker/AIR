@@ -8,9 +8,22 @@
 
 import Foundation
 import MapKit
+
+
 enum Bacheca{
     static var avvisi:[FeedResponse.Item] = []
     static var biglietterie: [Biglietteria] = []
+    static var isDarkModeEnabled: Bool = true
+}
+
+enum Colors{
+    static let subView:UIColor = Bacheca.isDarkModeEnabled ? UIColor(red: 34/255, green: 40/255, blue: 66/255, alpha: 1) : .white
+    static let searchButtonImg: UIImage = Bacheca.isDarkModeEnabled ? UIImage(named: "threeLinesIcon-1.png")! : UIImage(named: "threeLinesIconDark.png")!
+    
+    static let text: UIColor = Bacheca.isDarkModeEnabled ? .white : .black
+    
+    static let background: UIColor = Bacheca.isDarkModeEnabled ? UIColor(red: 26/255, green: 29/255, blue: 47/255, alpha: 1): .white
+    
 }
 
 enum Constants{
@@ -34,6 +47,15 @@ extension Date{
         return myStringafd
     }
     
+}
+
+extension CLLocationManager{
+    
+    class func distanceFrom(_ annotation: Biglietteria) throws -> Double{
+        let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+        guard let userLoc = CLLocationManager().location else {throw Exception.userLocationUnavailable  }
+        return userLoc.distance(from: location)
+    }
 }
 
 extension UIButton {
@@ -81,6 +103,42 @@ extension UINavigationController{
     }
 }
 
-enum Exception:Error{
-    case userLocationUnavailable
+
+enum Exception:String,Error{
+    case userLocationUnavailable = "User Location Unavailable"
 }
+
+
+extension NSNotification.Name {
+    static let darkModeEnabled = NSNotification.Name("darkModeEnabled")
+    static let darkModeDisabled = NSNotification.Name("darkModeDisabled")
+    static let reloadViews = NSNotification.Name("reload data")
+    static let avvisi = NSNotification.Name("Avvisi")
+
+}
+
+
+@objc protocol DarkModeDelegate {
+    @objc func didEnableDarkMode()
+    @objc func didDisableDarkMode()
+}
+
+extension UIViewController{
+    var darkModeDelegate: DarkModeDelegate{
+        get{
+            return self as! DarkModeDelegate
+        }
+    }
+    
+    @objc func enableDarkMode(){
+        darkModeDelegate.didEnableDarkMode()
+    }
+    
+    @objc func disableDarkMode(){
+        darkModeDelegate.didDisableDarkMode()
+    }
+    
+}
+
+
+

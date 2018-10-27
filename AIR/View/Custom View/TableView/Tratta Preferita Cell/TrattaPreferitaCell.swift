@@ -14,7 +14,19 @@ class TrattaPreferitaCell: UITableViewCell {
         super.awakeFromNib()
         self.mainBackground.layer.cornerRadius = 20
         self.mainBackground.layer.masksToBounds = true
+ 
         pureLayout()
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeOn), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeOff), name: .darkModeDisabled, object: nil)
+        setColors()
+    }
+    
+    func setColors(){
+        mainBackground.backgroundColor = Colors.subView
+        contentView.backgroundColor = Colors.background
+        shadowVIew.backgroundColor = Colors.subView
+        cittàDiArrivo.textColor = Colors.text
+        cittàDiPartenza.textColor = Colors.text
     }
     
     func setCell(perTratta tratta:Tratta){
@@ -53,5 +65,25 @@ class TrattaPreferitaCell: UITableViewCell {
         
         
     }
+    @objc func darkModeOn(){
+        didEnableDarkMode()
+    }
+    
+    @objc func darkModeOff(){
+        didDisableDarkMode()
+    }
+    
+    
+}
+
+extension TrattaPreferitaCell: DarkModeDelegate{
+    func didEnableDarkMode() {
+        setColors()
+    }
+    
+    func didDisableDarkMode() {
+        setColors()
+    }
+    
     
 }

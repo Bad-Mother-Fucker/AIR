@@ -18,10 +18,20 @@ class BiglietterieMapViewController: UIViewController {
     
     
     var segmentedControl: UISegmentedControl!
-    let biglietterie = Constants.biglietterie
-    let filterButton = UIBarButtonItem(image: UIImage(imageLiteralResourceName: "raggio di azione"), style:.plain, target: self, action: #selector(filterResults(_ :)))
 
-  
+    
+    var biglietterie = Constants.biglietterie 
+    var distanza: Int! = 10
+
+//    func sortBiglietterie(){
+//        DispatchQueue.main.async {
+//            self.biglietterie?.sort(by: { (lhs, rhs) -> Bool in
+//                return lhs.distanceFromMe < rhs.distanceFromMe
+//            })
+//            self.elenco.reloadData()
+//            self.elenco.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+//        }
+//    }
 
     
     
@@ -132,10 +142,8 @@ class BiglietterieMapViewController: UIViewController {
     
     
     private func setNavBar(){
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
-        
+       
+      
     }
     private func setSegmentedControl(){
         let items = ["Mappa", "Elenco"]
@@ -153,7 +161,7 @@ class BiglietterieMapViewController: UIViewController {
             elenco.isHidden = true
             mappa.isHidden = false
         case 1:
-            navigationItem.rightBarButtonItem = filterButton
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(imageLiteralResourceName: "raggio di azione"), style:.plain, target: self, action: #selector(filterResults(_ :)))
             elenco.isHidden = false
             mappa.isHidden = true
             
@@ -163,13 +171,16 @@ class BiglietterieMapViewController: UIViewController {
     }
     
     @objc func filterResults(_ sender: UIBarButtonItem){
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "filtraRisultati")
-        self.present(vc, animated: true, completion: nil)
+        performSegue(withIdentifier: "filterResults", sender: self)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavBar()
+        navigationController?.navigationBar.isHidden = false
         startLocationUpdate()
         mappa.delegate = self
         elenco.delegate = self
@@ -179,10 +190,30 @@ class BiglietterieMapViewController: UIViewController {
         mappa.showsScale = true
         addAnnotationsData(fromFileNamed: "Biglietterie")
         setSegmentedControl()
+        NotificationCenter.default.addObserver(forName: .reloadViews, object: nil, queue: nil) { (notifica) in
+            guard let value = notifica.userInfo!["value"] else{return}
+            
+            
+            DispatchQueue.main.async {
+                self.distanza = Int(value as! Float)
+                self.biglietterie = Constants.biglietterie?.filter({ (biglietteria) -> Bool in
+                    
+                    return Int(biglietteria.distanceFromMe) < self.distanza*1000
+                })
+                self.elenco.reloadData()
+                guard self.elenco.numberOfRows(inSection: 0) > 0 else{return}
+                self.elenco.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            }
+           
+        }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(enableDarkMode), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disableDarkMode), name: .darkModeDisabled, object: nil)
         
         
     }
+    
+  
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -221,6 +252,11 @@ extension BiglietterieMapViewController: CLLocationManagerDelegate {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? SliderViewController else{return}
+        destination.lastValue = Float(self.distanza)
+    }
+    
 }
 
 
@@ -239,7 +275,12 @@ extension BiglietterieMapViewController: MKMapViewDelegate {
 
 
 extension BiglietterieMapViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(biglietterie!.count)
         return biglietterie?.count ?? 0
     }
     
@@ -250,43 +291,54 @@ extension BiglietterieMapViewController: UITableViewDelegate, UITableViewDataSou
             let l2 = cell.viewWithTag(2) as! UILabel
             l1.text = biglietterie[indexPath.row].nome
             l2.text = "\(biglietterie[indexPath.row].indirizzo) - \(biglietterie[indexPath.row].località)"
-            cell.accessoryView = AccessoryButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30),forIndexPath: indexPath,parent: self)
+            cell.accessoryView = AccessoryButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30),forIndexPath: indexPath,parent: self,biglietteria: biglietterie[indexPath.row] )
             return cell
         }
         return UITableViewCell()
     }
     
     
-    
+    fileprivate class AccessoryButton: UIButton {
+        private var biglietteria: Biglietteria
+        private var indexPath: IndexPath
+        private var parent: UIViewController
+        
+        
+        init(frame: CGRect,forIndexPath indexPath: IndexPath,parent: UIViewController,biglietteria: Biglietteria) {
+            self.indexPath = indexPath
+            self.parent = parent
+            self.biglietteria = biglietteria
+            super.init(frame: frame)
+            addTarget(self, action: #selector(accessoryButtonTapped), for: .touchUpInside)
+            setImage(UIImage(named: "location.png"), for: .normal)
+            
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        
+        
+        
+        @objc func accessoryButtonTapped(sender: UIButton){
+
+            biglietteria.apriInMappe(fromViewController: parent)
+        }
+    }
     
     
 }
 
-fileprivate class AccessoryButton: UIButton {
-    private var biglietterie = Constants.biglietterie ?? []
-    private var indexPath: IndexPath
-    private var parent: UIViewController
-    
-    
-    init(frame: CGRect,forIndexPath indexPath: IndexPath,parent: UIViewController) {
-        self.indexPath = indexPath
-        self.parent = parent
-        super.init(frame: frame)
-        addTarget(self, action: #selector(accessoryButtonTapped), for: .touchUpInside)
-        setImage(UIImage(named: "location.png"), for: .normal)
-      
+
+extension BiglietterieMapViewController:DarkModeDelegate{
+    func didEnableDarkMode() {
+        
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func didDisableDarkMode() {
+        
     }
     
     
-    
-    
-    @objc func accessoryButtonTapped(sender: UIButton){
-        guard let biglietterie = DecoderBiglietteria.loadBiglietterieDaFile(conNome: "Biglietterie") else {return}
-        let biglietteria = biglietterie[indexPath.row]
-        biglietteria.apriInMappe(fromViewController: parent)
-    }
 }

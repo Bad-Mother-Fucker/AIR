@@ -14,12 +14,26 @@ class AvvisoCell: UITableViewCell {
         super.awakeFromNib()
         self.mainBackground.layer.cornerRadius = 20
         self.mainBackground.layer.masksToBounds = true
+       
       
         self.titoloAvviso.isEditable = false
         self.titoloAvviso.isSelectable = false
         self.titoloAvviso.isScrollEnabled = false
+
         pureLayout()
+        setColors()
+    
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeOn), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeOff), name: .darkModeDisabled, object: nil)
     }
+    
+    func setColors(){
+        self.titoloAvviso.textColor = Colors.text
+        self.contentView.backgroundColor = Colors.background
+        self.viewWithTag(2)?.backgroundColor = Colors.subView
+        self.mainBackground.backgroundColor = Colors.subView
+    }
+    
     
     @IBOutlet weak var mainBackground: UIView!
     
@@ -59,7 +73,7 @@ class AvvisoCell: UITableViewCell {
         self.titoloAvviso.autoPinEdge(.right, to: .left, of: immagineAvviso, withOffset: 0,relation:.lessThanOrEqual)
         
         
-        self.dataAvviso.autoPinEdge(toSuperviewEdge: .bottom,withInset:5)
+        self.dataAvviso.autoPinEdge(toSuperviewEdge: .bottom,withInset:10)
         self.dataAvviso.autoPinEdge(.left, to: .left, of: titoloAvviso)
         self.dataAvviso.autoSetDimensions(to: CGSize(width: 120, height: 20))
         
@@ -68,5 +82,25 @@ class AvvisoCell: UITableViewCell {
         self.immagineAvviso.autoSetDimensions(to: CGSize(width: 75, height: 75))
     }
     
+    
+    @objc func darkModeOn(){
+        didEnableDarkMode()
+    }
+    
+    @objc func darkModeOff(){
+        didDisableDarkMode()
+    }
+    
+}
 
+extension AvvisoCell: DarkModeDelegate{
+    func didEnableDarkMode() {
+        setColors()
+    }
+    
+    func didDisableDarkMode() {
+        setColors()
+    }
+    
+    
 }

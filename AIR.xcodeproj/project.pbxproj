@@ -33,9 +33,15 @@
 		05AE3F532138219C00D4A5F2 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE3F522138219C00D4A5F2 /* ShadowView.swift */; };
 		05AE3F5521394F5200D4A5F2 /* RicercaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AE3F5421394F5200D4A5F2 /* RicercaViewController.swift */; };
 		05C03163213F21EF00891155 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C03162213F21EF00891155 /* APIManager.swift */; };
+		1907D572216E5897008CAA07 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907D571216E5897008CAA07 /* LaunchViewController.swift */; };
 		19119482215C1D3A0092328E /* AvvisiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19119481215C1D3A0092328E /* AvvisiTableViewController.swift */; };
-		19119484215F62BC0092328E /* ImpostazioniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19119483215F62BC0092328E /* ImpostazioniViewController.swift */; };
+		193346C2216DDDFA00AA62BB /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193346C1216DDDFA00AA62BB /* SliderViewController.swift */; };
+		19945E072179DCCF00B6A546 /* AvvisiWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19945E062179DCCF00B6A546 /* AvvisiWebViewController.swift */; };
 		19BC94EE21620A9E003ED8DF /* BiglietterieMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BC94ED21620A9E003ED8DF /* BiglietterieMapViewController.swift */; };
+		19BFF792216F862C00738C9B /* 150per150.png in Resources */ = {isa = PBXBuildFile; fileRef = 19BFF78F216F862B00738C9B /* 150per150.png */; };
+		19BFF793216F862C00738C9B /* 150per150@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19BFF790216F862C00738C9B /* 150per150@3x.png */; };
+		19BFF794216F862C00738C9B /* 150per150@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19BFF791216F862C00738C9B /* 150per150@2x.png */; };
+		19BFF796216F885700738C9B /* ImpostazioniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BFF795216F885700738C9B /* ImpostazioniViewController.swift */; };
 		19C2355C216241D80070C809 /* Biglietteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C2355B216241D80070C809 /* Biglietteria.swift */; };
 		19DC5F452163580800D5EFB0 /* BiglietteriaAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DC5F442163580800D5EFB0 /* BiglietteriaAnnotationView.swift */; };
 		19DC5F472163A84900D5EFB0 /* Biglietterie.json in Resources */ = {isa = PBXBuildFile; fileRef = 19DC5F462163A84900D5EFB0 /* Biglietterie.json */; };
@@ -96,10 +102,16 @@
 		05AE3F522138219C00D4A5F2 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		05AE3F5421394F5200D4A5F2 /* RicercaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RicercaViewController.swift; sourceTree = "<group>"; };
 		05C03162213F21EF00891155 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		1907D571216E5897008CAA07 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		19119481215C1D3A0092328E /* AvvisiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvvisiTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		19119483215F62BC0092328E /* ImpostazioniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpostazioniViewController.swift; sourceTree = "<group>"; };
+		193346C1216DDDFA00AA62BB /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		197B72A78AA3E82EB16BD563 /* Pods_AIRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AIRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19945E062179DCCF00B6A546 /* AvvisiWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvvisiWebViewController.swift; sourceTree = "<group>"; };
 		19BC94ED21620A9E003ED8DF /* BiglietterieMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiglietterieMapViewController.swift; sourceTree = "<group>"; };
+		19BFF78F216F862B00738C9B /* 150per150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 150per150.png; path = "../../icon air orari/bus/150per150.png"; sourceTree = "<group>"; };
+		19BFF790216F862C00738C9B /* 150per150@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "150per150@3x.png"; path = "../../icon air orari/bus/150per150@3x.png"; sourceTree = "<group>"; };
+		19BFF791216F862C00738C9B /* 150per150@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "150per150@2x.png"; path = "../../icon air orari/bus/150per150@2x.png"; sourceTree = "<group>"; };
+		19BFF795216F885700738C9B /* ImpostazioniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImpostazioniViewController.swift; path = "/Users/micheledesena/Desktop/Lavoro/Progetti/XCODE/AIR/App AIR/AIR/AIR/Controller/ImpostazioniViewController.swift"; sourceTree = "<absolute>"; };
 		19C2355B216241D80070C809 /* Biglietteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biglietteria.swift; sourceTree = "<group>"; };
 		19DC5F442163580800D5EFB0 /* BiglietteriaAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiglietteriaAnnotationView.swift; sourceTree = "<group>"; };
 		19DC5F462163A84900D5EFB0 /* Biglietterie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Biglietterie.json; sourceTree = "<group>"; };
@@ -191,6 +203,9 @@
 				056F705A21356CDF0042493C /* View */,
 				056F705921356CD10042493C /* Model */,
 				056F7022213348930042493C /* Assets.xcassets */,
+				19BFF78F216F862B00738C9B /* 150per150.png */,
+				19BFF791216F862C00738C9B /* 150per150@2x.png */,
+				19BFF790216F862C00738C9B /* 150per150@3x.png */,
 				056F7027213348930042493C /* Info.plist */,
 				056F701F213348910042493C /* AIR.xcdatamodeld */,
 				056F706821361F900042493C /* AIR-Bridging-Header.h */,
@@ -281,11 +296,14 @@
 		056F705B21356CFB0042493C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				19BFF795216F885700738C9B /* ImpostazioniViewController.swift */,
+				193346C1216DDDFA00AA62BB /* SliderViewController.swift */,
 				056F701A213348910042493C /* ViewController.swift */,
 				05AE3F5421394F5200D4A5F2 /* RicercaViewController.swift */,
 				19119481215C1D3A0092328E /* AvvisiTableViewController.swift */,
-				19119483215F62BC0092328E /* ImpostazioniViewController.swift */,
 				19BC94ED21620A9E003ED8DF /* BiglietterieMapViewController.swift */,
+				1907D571216E5897008CAA07 /* LaunchViewController.swift */,
+				19945E062179DCCF00B6A546 /* AvvisiWebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -447,10 +465,13 @@
 				19DC5F472163A84900D5EFB0 /* Biglietterie.json in Resources */,
 				051CE20A213DC26F00656F84 /* CorsaCell.xib in Resources */,
 				056F7026213348930042493C /* LaunchScreen.storyboard in Resources */,
+				19BFF792216F862C00738C9B /* 150per150.png in Resources */,
+				19BFF794216F862C00738C9B /* 150per150@2x.png in Resources */,
 				059CE450213AB12300225260 /* SearchPanelView.xib in Resources */,
 				056F7023213348930042493C /* Assets.xcassets in Resources */,
 				056F704E213351D90042493C /* AvvisiCell.xib in Resources */,
 				056F704A21334E7B0042493C /* TrattaPreferitaCell.xib in Resources */,
+				19BFF793216F862C00738C9B /* 150per150@3x.png in Resources */,
 				0596C014213FFA4D0039F0C1 /* AvvisoGrandeCell.xib in Resources */,
 				056F701E213348910042493C /* Main.storyboard in Resources */,
 			);
@@ -561,19 +582,22 @@
 				056F701B213348910042493C /* ViewController.swift in Sources */,
 				059CE44E213A25C000225260 /* SearchPanelView.swift in Sources */,
 				056F704C21334EDD0042493C /* TrattaPreferitaCell.swift in Sources */,
+				1907D572216E5897008CAA07 /* LaunchViewController.swift in Sources */,
 				056F706721358F690042493C /* Utente.swift in Sources */,
 				056F7019213348910042493C /* AppDelegate.swift in Sources */,
 				19119482215C1D3A0092328E /* AvvisiTableViewController.swift in Sources */,
+				19945E072179DCCF00B6A546 /* AvvisiWebViewController.swift in Sources */,
 				19C2355C216241D80070C809 /* Biglietteria.swift in Sources */,
 				19BC94EE21620A9E003ED8DF /* BiglietterieMapViewController.swift in Sources */,
 				05AE3F532138219C00D4A5F2 /* ShadowView.swift in Sources */,
 				0596C00F213FF3210039F0C1 /* AvvisoGrandeCell.swift in Sources */,
 				056F7052213557060042493C /* MainTableHeaderView.swift in Sources */,
+				19BFF796216F885700738C9B /* ImpostazioniViewController.swift in Sources */,
 				19DC5F452163580800D5EFB0 /* BiglietteriaAnnotationView.swift in Sources */,
 				056F705821356A3B0042493C /* AvvisoCell.swift in Sources */,
 				051CE209213DC26F00656F84 /* CorsaCell.swift in Sources */,
+				193346C2216DDDFA00AA62BB /* SliderViewController.swift in Sources */,
 				056F7061213589A20042493C /* Avviso.swift in Sources */,
-				19119484215F62BC0092328E /* ImpostazioniViewController.swift in Sources */,
 				056F706421358E7A0042493C /* Constants.swift in Sources */,
 				19DC5F492163ACD500D5EFB0 /* DecoderBiglietterie.swift in Sources */,
 			);

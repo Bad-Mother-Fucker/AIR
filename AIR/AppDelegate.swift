@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+     
+
         
-        // Override point for customization after application launch.
         Utente.shared.aggiungiAiPreferiti(FakeData.tratta1)
         Utente.shared.aggiungiAiPreferiti(FakeData.tratta2)
         Utente.shared.aggiungiAiPreferiti(FakeData.tratta3)
@@ -27,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DispatchQueue.main.async {
                 Bacheca.avvisi.append(contentsOf: response.items)
                 
-                NotificationCenter.default.post(Notification(name: NSNotification.Name("reload data"), object: nil))
+                NotificationCenter.default.post(Notification(name:.reloadViews, object: nil))
             }
         }) { (error) in
 

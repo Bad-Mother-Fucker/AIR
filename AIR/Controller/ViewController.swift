@@ -18,10 +18,22 @@ class ViewController: UIViewController,UITableViewDataSource {
         tableView.register(UINib(nibName: "AvvisiCell", bundle: nil), forCellReuseIdentifier: "avvisiCell")
 //        aggiornaAvvisi()
         pureLayout()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadViews), name: NSNotification.Name("reload data"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(mostraAvvisi), name: NSNotification.Name("Avvisi"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadViews), name: .reloadViews, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(mostraAvvisi), name: .avvisi, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(enableDarkMode), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disableDarkMode), name: .darkModeDisabled, object: nil)
+        navigationController?.navigationBar.prefersLargeTitles = true
+//       navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        setColors()
     }
+    
+    private func setColors(){
+        self.view.backgroundColor = Colors.background
+        view.viewWithTag(2)?.isHidden = Bacheca.isDarkModeEnabled ? true:false
+        view.viewWithTag(3)?.backgroundColor = Colors.background
+    }
+    
+    
     
     @objc func reloadViews() {
         tableView.reloadData()
@@ -34,7 +46,11 @@ class ViewController: UIViewController,UITableViewDataSource {
     
     @IBOutlet weak var settingsButton: UIButton!
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!{
+        didSet{
+            titleLabel.textColor = Colors.text
+        }
+    }
     
     @IBOutlet weak var searchButton: UIButton!{
         didSet{
@@ -43,7 +59,13 @@ class ViewController: UIViewController,UITableViewDataSource {
     }
     
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!{
+        didSet{
+            tableView.backgroundColor = Colors.background
+        }
+    }
+    
+    
     func pureLayout(){
         settingsButton.configureForAutoLayout()
         titleLabel.configureForAutoLayout()
@@ -72,22 +94,20 @@ class ViewController: UIViewController,UITableViewDataSource {
         tableView.autoPinEdge(toSuperviewEdge: .right)
         
        tableView.autoSetDimension(.height, toSize: self.view.frame.height/2, relation: .greaterThanOrEqual)
-      
     }
     
     
     @objc func mostraAvvisi(){
-       let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AvvisiViewController")
-        self.navigationController?.pushViewController(vc, animated: true)
+//       let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AvvisiViewController")
+//        self.navigationController?.pushViewController(vc, animated: true)
+        performSegue(withIdentifier: "mostraAvvisi", sender: self)
         
     }
     
-    @objc func mostraTratte(){
-        //present tratteViewController
-    }
+   
     
     func setButton(){
-        self.searchButton.backgroundColor = .white
+        self.searchButton.backgroundColor = Colors.subView
         self.searchButton.layer.cornerRadius = 10
         self.searchButton.layer.masksToBounds = true
         self.searchButton.layer.borderWidth = 0.5
@@ -102,28 +122,29 @@ class ViewController: UIViewController,UITableViewDataSource {
         imgView.image = #imageLiteral(resourceName: "threeLinesIcon")
         imgView.contentMode = .scaleAspectFit
         self.searchButton.setTitle("Cerca Destinazione", for: .normal)
-        self.searchButton.setTitleColor(.black, for: .normal)
+        self.searchButton.setTitleColor(Colors.text, for: .normal)
         self.searchButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .light)
-    
     }
-    
-//
-//    func aggiornaAvvisi() {
-//        APIManager.shared.aggiornaAvvisi(onSuccess: { (response) in
-//            DispatchQueue.main.async {
-//                print(response.status)
-//                Bacheca.avvisi.append(contentsOf: response.items)
-//               NotificationCenter.default.post(Notification(name: NSNotification.Name("reload data"), object: nil))
-//            }
-//        }) { (error) in
-//            DispatchQueue.main.async {
-//
-//            }
-//        }
-//    }
-    
 
 }
+
+
+
+
+
+extension ViewController: DarkModeDelegate{
+    func didEnableDarkMode() {
+        setColors()
+    }
+    
+    func didDisableDarkMode() {
+        setColors()
+    }
+    
+    
+}
+
+
 
 
 
@@ -155,27 +176,18 @@ extension ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
-            let headerView = MainTableHeaderView("Tratte Preferite",frame: CGRect())
+            let headerView = MainTableHeaderView("Recenti",frame: CGRect(),hasAccessoryButton: false)
             return headerView
         default:
-            let headerView = MainTableHeaderView("Avvisi",frame: CGRect(x: tableView.frame.minX, y: tableView.frame.minY, width: tableView.frame.width, height: 65))
+            let headerView = MainTableHeaderView("Avvisi",frame: CGRect(),hasAccessoryButton:true)
             return headerView
         }
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        switch indexPath.section{
-//        case 0:
-//            mostraTratte()
-//        case 1:
-//            mostraAvvisi()
-//        default:
-//            break
-//        }
-//    }
-//
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     
     }
     
 }
+

@@ -13,18 +13,15 @@ class AvvisiTableViewController: UIViewController,UITableViewDataSource,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavBar()
-        
+//         navigationController?.navigationBar.isHidden = false
 //        tableView.scrollToRowAtIndexPath(IndexPath, atScrollPosition: .Bottom ,animated: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(enableDarkMode), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disableDarkMode), name: .darkModeDisabled, object: nil)
         
     }
    
     
-    
-    @IBAction func back(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+
     @IBOutlet weak var tableViewAvvisi: UITableView!{
         didSet{
             tableViewAvvisi.register(UINib(nibName: "AvvisoGrandeCell", bundle: nil), forCellReuseIdentifier: "avvisoGrandeCell")
@@ -38,18 +35,10 @@ class AvvisiTableViewController: UIViewController,UITableViewDataSource,UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableViewAvvisi.scrollToRow(at: indexPath, at: .bottom, animated: false)
-      
+      navigationController?.navigationBar.isHidden = false
     }
     
  
-    func setNavBar(){
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,7 +63,6 @@ class AvvisiTableViewController: UIViewController,UITableViewDataSource,UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "avvisoGrandeCell", for: indexPath) as! AvvisoGrandeCell
         cell.setCell(perAvviso: Bacheca.avvisi[indexPath.row])
-        
         return cell
     }
     
@@ -83,4 +71,5 @@ class AvvisiTableViewController: UIViewController,UITableViewDataSource,UITableV
     
     
 }
+
 

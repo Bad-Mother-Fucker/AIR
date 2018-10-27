@@ -27,6 +27,12 @@ class Biglietteria: NSObject,MKAnnotation,Codable{
         }
     }
     
+    var distanceFromMe: Double {
+        get {
+            guard let userLoc = CLLocationManager().location else {return 0}
+            return userLoc.distance(from: CLLocation(latitude: latitudine, longitude: longitudine))
+        }
+    }
     
     var subtitle: String? {
         get {
@@ -61,17 +67,13 @@ class Biglietteria: NSObject,MKAnnotation,Codable{
         case nome = "Nome"
     }
     
+  
     
-    func distanceFrom(_ annotation: Biglietteria) throws -> Double{
-        let location = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-        guard let userLoc = CLLocationManager().location else {throw Exception.userLocationUnavailable  }
-        return userLoc.distance(from: location)
-    }
     
     func apriInMappe(fromViewController vc: UIViewController){
         var mode = MKLaunchOptionsDirectionsModeDriving
         do{
-            let distance = try distanceFrom(self)
+            let distance = try CLLocationManager.distanceFrom(self)
             if distance < 2000 {
                 mode = MKLaunchOptionsDirectionsModeWalking
             }

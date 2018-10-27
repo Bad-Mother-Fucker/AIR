@@ -8,21 +8,25 @@
 
 import UIKit
 
-class MainTableHeaderView: UIView {
+class MainTableHeaderView:UIView {
     
     let title = UILabel()
     let icon = UIImageView()
     let button = UIButton()
     var viewController: UIViewController!
-    
+    let showsAccessoryButton: Bool!
+
+    let sideEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     let tapRecognizer = UITapGestureRecognizer()
     
-    init(_ title:String,frame:CGRect){
+    
+    init(_ title:String,frame:CGRect,hasAccessoryButton: Bool ){
+        showsAccessoryButton = hasAccessoryButton
         super.init(frame:frame)
         self.title.text = title
         //self.viewController = viewController
         switch title{
-        case "Tratte Preferite":
+        case "Recenti":
             self.icon.image = #imageLiteral(resourceName: "cuore")
             break
         case "Avvisi":
@@ -33,7 +37,9 @@ class MainTableHeaderView: UIView {
         }
         setView()
         pureLayout()
-    
+        setColors()
+     
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,40 +59,36 @@ class MainTableHeaderView: UIView {
         self.button.autoPinEdge(toSuperviewEdge: .right, withInset: 20)
         self.button.autoSetDimensions(to: CGSize(width: 50, height: 15))
         
+        if !showsAccessoryButton {
+            button.isHidden = true
+        }
     }
     
+    
     func setView(){
-        self.backgroundColor = .white
+       
         
         self.title.configureForAutoLayout()
         self.icon.configureForAutoLayout()
         self.button.configureForAutoLayout()
         self.title.font = UIFont.systemFont(ofSize: 20,weight: .bold)
+        
+        
         self.button.setTitle("altro", for: .normal)
         self.button.setTitleColor(.gray, for: .normal)
-        //self.button.addTarget(viewController, action: action, for: .touchUpInside)
         tapRecognizer.numberOfTapsRequired = 1
         tapRecognizer.numberOfTouchesRequired = 1
         tapRecognizer.addTarget(self, action: #selector(mostra))
         button.addGestureRecognizer(tapRecognizer)
         
         
-        let layer = self.layer;
-        layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 0.0, height: 8)
-        layer.shadowRadius = 2
-        
-        self.backgroundColor = UIColor.clear
-        
-        let blurEffect = UIBlurEffect(style: .light)
-        let sideEffectView = UIVisualEffectView(effect: blurEffect)
         sideEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         sideEffectView.frame = self.bounds;
         self.addSubview(sideEffectView)
         addSubview(icon)
         addSubview(self.title)
+        
         addSubview(self.button)
         
     }
@@ -94,6 +96,42 @@ class MainTableHeaderView: UIView {
     @objc func mostra(){
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: title.text!), object: nil)
     }
-
+    
+    
+    
 }
 
+extension MainTableHeaderView: DarkModeDelegate{
+    
+    private func setColors(){
+        self.title.textColor = Colors.text
+        sideEffectView.isHidden = Bacheca.isDarkModeEnabled ? true:false
+        self.backgroundColor = Bacheca.isDarkModeEnabled ? Colors.background : .clear
+        
+        if !Bacheca.isDarkModeEnabled{
+            layer.shadowColor = UIColor.lightGray.cgColor
+            layer.shadowOpacity = 0.1
+            layer.shadowOffset = CGSize(width: 0.0, height: 8)
+            layer.shadowRadius = 2
+        }else{
+            layer.shadowColor = UIColor.clear.cgColor
+            layer.shadowOpacity = 0.1
+            layer.shadowOffset = CGSize(width: 0.0, height: 8)
+            layer.shadowRadius = 2
+        }
+
+    }
+    
+    func didEnableDarkMode() {
+        setColors()
+        self.sideEffectView.isHidden = true
+    }
+    
+    func didDisableDarkMode() {
+        setColors()
+        self.sideEffectView.isHidden = true
+    }
+ 
+    
+    
+}
